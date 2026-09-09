@@ -1,15 +1,131 @@
----
----
-
-@import "{{ site.theme }}";
-
-// Custom styles for WOW Scratch & Win event
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-
-.container {
-  max-width: 960px;
-  padding: 0 15px;
-  margin: 0 auto;
-}
+  :root {
+      --maroon: #7a1f2b;
+      --maroon-dark: #5c1520;
+      --gold: #c4a35a;
+      --gold-light: #e8d5a3;
+      --cream: #f7f1e6;
+      --ink: #2b2420;
+      --muted: #6b5e55;
+      --white: #fffdf8;
+      --ok: #1f7a4d;
+      --bad: #9b2c2c;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      font-family: "Noto Sans", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #fff 0%, transparent 50%),
+        radial-gradient(900px 500px at 110% 0%, #ead9b0 0%, transparent 45%),
+        linear-gradient(180deg, #f4ead9 0%, var(--cream) 40%, #efe4d2 100%);
+    }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 28px 18px 64px; }
+    header { text-align: center; margin-bottom: 22px; }
+    .brand {
+      letter-spacing: 0.28em;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--maroon);
+      text-transform: uppercase;
+    }
+    h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(32px, 6vw, 48px);
+      margin: 8px 0 6px;
+      color: var(--maroon-dark);
+    }
+    .sub { color: var(--muted); font-size: 14px; line-height: 1.5; }
+    .card {
+      background: var(--white);
+      border: 1px solid #eadfcb;
+      border-radius: 18px;
+      padding: 26px 22px;
+      box-shadow: 0 16px 40px rgba(92, 21, 32, 0.08);
+    }
+    label { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin: 14px 0 6px; }
+    input[type="text"], input[type="email"], input[type="password"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ddd2bf;
+      border-radius: 10px;
+      font: inherit;
+      background: #fff;
+    }
+    input:focus { outline: 2px solid var(--gold); border-color: var(--gold); }
+    .hint { font-size: 12px; color: var(--muted); margin-top: 6px; }
+    .error { color: var(--bad); font-size: 13px; margin-top: 10px; }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; }
+    button, .btn {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 12px 22px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-primary { background: var(--maroon); color: #fff; width: 100%; margin-top: 18px; }
+    .btn-primary:hover { background: var(--maroon-dark); }
+    .btn-gold { background: linear-gradient(180deg, #ead7a0, var(--gold)); color: var(--maroon-dark); }
+    .btn-ghost { background: transparent; color: var(--maroon); border: 1px solid #e2d3b8; }
+    .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+    .choice {
+      background: #fff;
+      border: 2px solid #eadfcb;
+      border-radius: 14px;
+      padding: 22px 10px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .choice:hover { border-color: var(--gold); }
+    .q { font-family: "Cormorant Garamond", Georgia, serif; font-size: 26px; line-height: 1.3; margin: 0; text-align: center; }
+    .scratch-wrap {
+      position: relative;
+      width: min(100%, 420px);
+      margin: 18px auto 0;
+      aspect-ratio: 1.6 / 1;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      touch-action: none;
+    }
+    .prize {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: linear-gradient(160deg, #fffaf0, #f3e4c2);
+      text-align: center; padding: 16px;
+    }
+    .prize .amt {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 42px; color: var(--maroon); margin: 0;
+    }
+    .code {
+      font-family: ui-monospace, Consolas, monospace;
+      font-size: 18px; letter-spacing: 0.08em;
+      background: #fff; border: 1px dashed var(--gold);
+      padding: 8px 12px; border-radius: 8px; margin-top: 8px;
+    }
+    canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair; }
+    .meta { font-size: 13px; color: var(--muted); text-align: center; margin-top: 14px; line-height: 1.6; }
+    .ok { color: var(--ok); font-weight: 700; text-align: center; }
+    .badbox { text-align: center; }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    th, td { border-bottom: 1px solid #eee3d1; padding: 8px 6px; text-align: left; vertical-align: top; }
+    th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+    .admin-bar { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 16px; }
+    .hidden { display: none; }
+    footer { text-align: center; margin-top: 22px; font-size: 12px; color: var(--muted); }
+    .staff { color: var(--maroon); cursor: pointer; background: none; border: 0; font: inherit; text-decoration: underline; }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 8px; margin-bottom: 14px; }
+    .stat { background: #fff8ec; border-radius: 10px; padding: 10px; text-align: center; }
+    .stat b { display: block; font-size: 18px; color: var(--maroon); }
+    @media (max-width: 520px) {
+      .choices { grid-template-columns: 1fr; }
+      table { display: block; overflow-x: auto; }
+    }
+  </style>
